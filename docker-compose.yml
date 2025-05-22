@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: ldap_server
+    environment:
+      LDAP_ORGANISATION: $LDAP_ORGANISATION
+      LDAP_DOMAIN: $LDAP_DOMAIN
+      LDAP_ADMIN_PASSWORD: $LDAP_ADMIN_PASSWORD
+    ports:
+      - $LDAP1_PORT
+      - $LDAP2_PORT
+    volumes:
+      - ./ldap_data:/var/lib/ldap
+      - ./ldap_config:/etc/ldap/slapd.d
+
+  phpldapadmin:
+    image: osixia/phpldapadmin
+    container_name: ldap_web
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap_server
+    ports:
+      - $PHP_LDAP_ADMIN_PORT
+    depends_on:
+      - openldap
