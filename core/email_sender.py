@@ -43,7 +43,7 @@ class EmailSender:
         msg['To'] = self.email
         return msg
 
-    async def send_email(self, smtp_client=None, msg=None) -> bool | None:
+    async def send_email(self, smtp_client=None, msg=None) -> bool:
         try:
             smtp_client = smtp_client or self.create_smtp_client()
             msg = msg or self.create_message()

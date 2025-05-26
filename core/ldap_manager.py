@@ -12,14 +12,13 @@ logger = logging.getLogger(__name__)
 
 
 class LDAPManager:
-    LDAP_SERVER = os.getenv('LDAP_SERVER')
     LDAP_USER = os.getenv('LDAP_USER')
     LDAP_PASSWORD = os.getenv('LDAP_PASSWORD')
     BASE_DN = os.getenv('BASE_DN')
     LDAP_FILTER = os.getenv('LDAP_FILTER')
     PASSWORD_EXPIRY_ATTR = os.getenv('PASSWORD_EXPIRY_ATTR')
     LAST_NOTIFY_ATTR = os.getenv('LAST_NOTIFY_ATTR')
-    EXPIRY_DAYS = int(os.getenv('EXPIRY_DAYS', 90))
+    EXPIRY_DAYS = int(os.getenv('EXPIRY_DAYS', 3))
 
     def __init__(self):
         self.server = ldap_settings.server
