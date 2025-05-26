@@ -84,11 +84,12 @@
     
     # Порт веб-интерфейса phpLDAPadmin
     PHP_LDAP_ADMIN_PORT="6443:443"
-
-6. Запустите docker-compose.yml
+6. Создайте файл .dockerignore и добавьте директории
+   ```dockerfile
+    ldap_data/
+    ldap_config/
+   ```
+7. Запустите docker-compose.yml
     ```dockerfile
       docker-compose up
-7. Выполните запуск скрипта
-    ```bash
-      python main.py
-    ```
+   ```
